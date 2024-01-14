@@ -1,11 +1,26 @@
-import React from "react";
+import React, { Fragment, useMemo } from "react";
 import st from "./ChessBoard.module.scss";
 import Cell from "../Cell/Cell";
 
 const ChessBoard: React.FC = () => {
+
+
+    const paintCells = useMemo(() => () => {
+        const arrayCellS = [];
+        for (let i = 1; i < 65; i++) {
+            if (i % 2 == 0) arrayCellS.push(<Cell color={'dark'} />)
+            else arrayCellS.push(<Cell color={'light'} />)
+        }
+        return (
+            <Fragment>
+                {arrayCellS.map(el => el)}
+            </Fragment>
+        )
+    }, [])
+
     return(
         <div className={st.board}>
-            <Cell />
+            {paintCells()}
         </div>
     );
 } 
