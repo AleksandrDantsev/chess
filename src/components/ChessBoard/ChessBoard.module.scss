@@ -1,8 +1,8 @@
 .board {
     display: flex;
     flex-wrap: wrap;
-    width: 64px * 8;
-    height: 64px * 8; 
-    background-color: red;
+    width: 67px * 8;
+    height: 67px * 8; 
+    border: 3px solid rgb(36, 36, 36);
 }
 
