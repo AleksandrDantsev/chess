@@ -1,21 +1,17 @@
 import React, { Fragment, useMemo } from "react";
 import st from "./ChessBoard.module.scss";
+import Board from "../models/Board/Board";
 import Cell from "../Cell/Cell";
 
 const ChessBoard: React.FC = () => {
-
-
     const paintCells = useMemo(() => () => {
-        const arrayCellS = [];
-        let countRow = false;
-        for (let i = 1; i < 65; i++) {
-            if (i % 2 == 0) arrayCellS.push(<Cell color={countRow ? "light" : 'dark'} />)
-            else arrayCellS.push(<Cell color={countRow ? "dark" : 'light'} />)
-            if (i % 8 == 0) countRow = !countRow;
-        }
+        const board = new Board();
+        board.paintBoard();
+        const arrayCells = board.arrayCellS;
+        console.log(arrayCells)
         return (
             <Fragment>
-                {arrayCellS.map(el => el)}
+                {arrayCells.map(el => <Cell color={el.color}/>)}
             </Fragment>
         )
     }, [])
